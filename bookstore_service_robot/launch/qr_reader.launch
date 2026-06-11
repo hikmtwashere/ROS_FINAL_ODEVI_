@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="bookstore_service_robot"
+        type="qr_reader.py"
+        name="qr_reader"
+        output="screen">
+    <param name="image_topic" value="/camera/rgb/image_raw" />
+  </node>
+</launch>

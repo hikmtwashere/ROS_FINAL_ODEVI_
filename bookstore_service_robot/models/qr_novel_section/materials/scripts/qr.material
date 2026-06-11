@@ -1,0 +1,13 @@
+material QRNovelSection
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture novel_section.png
+      }
+    }
+  }
+}

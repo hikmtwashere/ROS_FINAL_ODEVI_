@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="qr_checkout_area">
+    <static>true</static>
+    <link name="qr_link">
+      <visual name="qr_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.60 0.02 0.60</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://qr_checkout_area/materials/scripts</uri>
+            <uri>model://qr_checkout_area/materials/textures</uri>
+            <name>QRCheckoutArea</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

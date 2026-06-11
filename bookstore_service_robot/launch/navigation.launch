@@ -1,0 +1,27 @@
+<launch>
+  <!-- TurtleBot3 modeli -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" />
+
+  <!-- Kaydedilen harita -->
+  <arg name="map_file" default="$(find bookstore_service_robot)/maps/map.yaml" />
+
+  <!-- Haritayı yayınlar -->
+  <node pkg="map_server"
+        type="map_server"
+        name="map_server"
+        args="$(arg map_file)" />
+
+  <!-- AMCL lokalizasyon -->
+  <include file="$(find turtlebot3_navigation)/launch/amcl.launch" />
+
+  <!-- move_base navigasyon -->
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <!-- RViz -->
+  <node pkg="rviz"
+        type="rviz"
+        name="rviz"
+        args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz" />
+</launch>

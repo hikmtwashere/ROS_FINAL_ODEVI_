@@ -1,0 +1,11 @@
+<launch>
+  <arg name="mission_file" default="$(find bookstore_service_robot)/config/mission.yaml" />
+
+  <node pkg="bookstore_service_robot"
+        type="waypoint_navigator.py"
+        name="waypoint_navigator"
+        output="screen">
+    <param name="mission_file" value="$(arg mission_file)" />
+    <param name="goal_timeout" value="90.0" />
+  </node>
+</launch>

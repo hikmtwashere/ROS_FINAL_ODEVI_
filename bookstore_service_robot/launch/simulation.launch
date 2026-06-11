@@ -1,0 +1,39 @@
+<launch>
+  <!-- TurtleBot3 modeli -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" />
+
+  <!-- Robot başlangıç konumu -->
+  <arg name="x_pos" default="0.0" />
+  <arg name="y_pos" default="0.0" />
+  <arg name="z_pos" default="0.01" />
+
+  <!-- Bookstore Gazebo dünyasını başlatır -->
+  <include file="$(find aws_robomaker_bookstore_world)/launch/bookstore.launch" />
+<node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" output="screen" />
+
+  <!-- TurtleBot3 robot description -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+  <!-- Robot state publisher -->
+  <node pkg="robot_state_publisher"
+        type="robot_state_publisher"
+        name="robot_state_publisher"
+        output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+  <!-- Lidar frame bağlantısı: /scan mesajı base_scan frame'inden geliyor -->
+  <node pkg="tf"
+        type="static_transform_publisher"
+        name="base_footprint_to_base_scan"
+        args="0 0 0.18 0 0 0 base_footprint base_scan 100" />
+        
+  <!-- TurtleBot3'ü Gazebo içine spawn eder -->
+  <node pkg="gazebo_ros"
+        type="spawn_model"
+        name="spawn_turtlebot3"
+        args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description"
+        output="screen" />
+          <!-- Görev noktalarındaki QR tabelaları -->
+  <include file="$(find bookstore_service_robot)/launch/qr_markers.launch" />
+</launch>

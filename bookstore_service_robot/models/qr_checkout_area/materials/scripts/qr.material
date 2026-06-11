@@ -1,0 +1,13 @@
+material QRCheckoutArea
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture checkout_area.png
+      }
+    }
+  }
+}
