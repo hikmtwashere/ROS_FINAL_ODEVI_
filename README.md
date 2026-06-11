@@ -714,3 +714,5 @@ Demo videosunda şu aşamalar gösterilebilir:
 ## Sonuç
 
 Bu proje ile ROS1 Noetic üzerinde TurtleBot3 Waffle Pi kullanılarak Gazebo ortamında QR doğrulamalı çoklu görev navigasyonu gerçekleştirilmiştir. Robot, harita üzerinden AMCL ile lokalize olmakta, move_base ile görev noktalarına gitmekte, kamera görüntüsünden QR kod okumakta ve görev sonunda sonuç raporu üretmektedir.
+
+Demo linki: https://drive.google.com/drive/folders/1nnkY4ANMgyMFOfeLdY4rPvx88oylYdZs?usp=drive_link
