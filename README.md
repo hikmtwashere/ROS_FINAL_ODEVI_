@@ -695,7 +695,7 @@ roslaunch bookstore_service_robot qr_reader.launch
 ```bash
 cd ~/rbtg_ws
 source devel/setup.bash
-roslaunch bookstore_service_robot task_manager.launch
+roslaunch bookstore_service_robot waypoint_navigator.launch
 ```
 
 ## Demo Videosunda Gösterilecekler
